@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import urllib2
 import re
-from dateutil import parser
 from datetime import datetime
 try:
 	m=open('prevRiverLevel.dat','r')
@@ -20,8 +19,7 @@ for l in reversed(t):
 		thisreadingmetric=readingmetric.group(1)
 	if readingdate:
 		thisreadingdate=readingdate.group(1)
-		thisreadingepoch=(parser.parse(thisreadingdate) - datetime(1970, 1, 1)).total_seconds()
-		line = thisreadingdate+" "+str(thisreadingepoch)+" "+str(thisreadingmetric)
+		line = thisreadingdate+" "+str(thisreadingmetric)
 		if not line in past:
 			print line
 			m=open('prevRiverLevel.dat','a')
